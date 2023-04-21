@@ -34,7 +34,10 @@ const getUserService = async (request) => {
       return errors["004"];
     }
     const response = await getUserData(userId);
-    const token = jwt.sign(response.data.user_id, "MYPRIVATEKEY");
+    const token = jwt.sign(
+      { userId: response.data.user_id },
+      process.env.JWT_SECRET
+    );
 
     return { ...response, token };
   } catch (error) {

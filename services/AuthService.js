@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const loginTokenService = async (request) => {
   try {
     const { userId } = request.body;
-    const token = jwt.sign(userId, "MYPRIVATEKEY");
+    const token = jwt.sign({ userId }, process.env.JWT_SECRET);
     const response = {
       token,
       status: true,

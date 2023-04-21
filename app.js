@@ -32,6 +32,7 @@ mongoose
 cron
   .schedule(
     "0 * * * *",
+    // "*/10 * * * * *",
     () => {
       notificationService();
     },
